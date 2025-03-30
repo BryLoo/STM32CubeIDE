@@ -1,0 +1,69 @@
+2025-03-29 17:53:24,797 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2025-03-29 17:57:48,234 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 17:57:48,235 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 17:57:48,237 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 17:57:48,237 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:06:21,737 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2025-03-29 18:06:29,241 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2025-03-29 18:38:39,764 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=false
+2025-03-29 18:38:41,092 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] StartTraceHandler.execute(), success : Collect=true
+2025-03-29 18:45:44,283 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:45:44,284 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:45:44,285 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:45:44,285 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:45:44,589 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:45:44,589 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:45:44,590 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:45:44,591 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,282 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,283 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,283 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,283 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,517 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,517 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,518 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:46:38,518 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:15,944 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:15,944 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:15,945 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:15,945 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:19,539 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:19,540 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:19,540 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:19,540 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:32,226 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 910501048 Bytes (958398464)
+2025-03-29 18:47:33,521 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 930946232 Bytes (958398464)
+2025-03-29 18:47:35,543 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 886857144 Bytes (959447040)
+2025-03-29 18:47:36,153 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: NVIC
+2025-03-29 18:47:36,153 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: USART
+2025-03-29 18:47:36,154 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: SYS
+2025-03-29 18:47:36,154 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: GPIO
+2025-03-29 18:47:36,154 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: RCC
+2025-03-29 18:47:36,154 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: I2C
+2025-03-29 18:47:36,155 [INFO] CodeGenerator:882 - code generatio: config db path: C:\ST\STM32CubeIDE_1.18.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.0.202502271554\\db\
+2025-03-29 18:47:36,156 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:36,156 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
+2025-03-29 18:47:36,414 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\MXTmpFiles\license.tmp_save
+2025-03-29 18:47:36,664 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\MXTmpFiles\license.tmp
+2025-03-29 18:47:36,753 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\MXTmpFiles\gpio.tmp_save
+2025-03-29 18:47:36,903 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\MXTmpFiles\gpio.tmp
+2025-03-29 18:47:37,066 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Src\stm32f4xx_it.c_save
+2025-03-29 18:47:37,351 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Src\stm32f4xx_it.c
+2025-03-29 18:47:37,374 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Inc\stm32f4xx_it.h_save
+2025-03-29 18:47:37,484 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Inc\stm32f4xx_it.h
+2025-03-29 18:47:37,555 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Src\stm32f4xx_hal_msp.c_save
+2025-03-29 18:47:37,692 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Src\stm32f4xx_hal_msp.c
+2025-03-29 18:47:37,718 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\MXTmpFiles\system.tmp_save
+2025-03-29 18:47:37,786 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\MXTmpFiles\system.tmp
+2025-03-29 18:47:37,904 [INFO] CodeEngine:319 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Inc\stm32f4xx_hal_conf.h_save
+2025-03-29 18:47:38,013 [INFO] CodeEngine:343 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Inc\stm32f4xx_hal_conf.h
+2025-03-29 18:47:38,104 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Inc\main.h_save
+2025-03-29 18:47:38,213 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Inc\main.h
+2025-03-29 18:47:38,243 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Src\main.c_save
+2025-03-29 18:47:38,386 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\Core\Src\main.c
+2025-03-29 18:47:39,042 [INFO] ProjectBuilder:3324 - Time for Copy HAL[1] : 523mS.
+2025-03-29 18:47:39,054 [INFO] ProjectBuilder:4912 - Project Generator version: 4.6.0-B36
+2025-03-29 18:47:39,154 [INFO] ConfigFileManager:1590 - The Die is : DIE433
+2025-03-29 18:47:41,344 [INFO] ProjectBuilder:5191 - Time for Generating toolchain IDE Files: 2290mS.
+2025-03-29 18:47:41,345 [INFO] ProjectBuilder:3181 - Time for Copy CMSIS : 1mS.
+2025-03-29 18:47:41,354 [INFO] ProjectBuilder:3181 - Time for Copy CMSIS : 0mS.

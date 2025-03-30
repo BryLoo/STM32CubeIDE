@@ -1,0 +1,38 @@
+2025-03-26 03:32:31,473 [INFO] WebApp:194 - Connection lost
+2025-03-26 03:35:21,132 [INFO] WebApp:191 - Connection restablished
+2025-03-26 03:35:29,087 [INFO] WebApp:194 - Connection lost
+2025-03-26 03:35:29,346 [INFO] WebApp:191 - Connection restablished
+2025-03-26 04:07:55,612 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 345781488 Bytes (804257792)
+2025-03-26 04:07:57,229 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 359258192 Bytes (804257792)
+2025-03-26 04:07:57,659 [INFO] UtilMem:75 - End SaveConfig() Used Memory: 376780136 Bytes (804257792)
+2025-03-26 04:07:58,148 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: NVIC
+2025-03-26 04:07:58,148 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: SYS
+2025-03-26 04:07:58,149 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: GPIO
+2025-03-26 04:07:58,149 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: RCC
+2025-03-26 04:07:58,149 [INFO] BlockDiagram:2775 - set Specific Code input for plugin: I2C
+2025-03-26 04:07:58,151 [INFO] CodeGenerator:882 - code generatio: config db path: C:\ST\STM32CubeIDE_1.18.0\STM32CubeIDE\plugins\com.st.stm32cube.common.mx_6.14.0.202502271554\\db\
+2025-03-26 04:07:58,296 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\MXTmpFiles\license.tmp_save
+2025-03-26 04:07:58,563 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\MXTmpFiles\license.tmp
+2025-03-26 04:07:58,731 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\MXTmpFiles\gpio.tmp_save
+2025-03-26 04:07:58,864 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\MXTmpFiles\gpio.tmp
+2025-03-26 04:07:59,052 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Src\stm32g0xx_it.c_save
+2025-03-26 04:07:59,269 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Src\stm32g0xx_it.c
+2025-03-26 04:07:59,290 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Inc\stm32g0xx_it.h_save
+2025-03-26 04:07:59,368 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Inc\stm32g0xx_it.h
+2025-03-26 04:07:59,439 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Src\stm32g0xx_hal_msp.c_save
+2025-03-26 04:07:59,586 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Src\stm32g0xx_hal_msp.c
+2025-03-26 04:07:59,614 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\MXTmpFiles\system.tmp_save
+2025-03-26 04:07:59,680 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\MXTmpFiles\system.tmp
+2025-03-26 04:07:59,746 [INFO] CodeEngine:319 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Inc\stm32g0xx_hal_conf.h_save
+2025-03-26 04:07:59,834 [INFO] CodeEngine:343 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Inc\stm32g0xx_hal_conf.h
+2025-03-26 04:07:59,881 [INFO] ApiDbMcu:508 - Load IP Config File for I2C1
+2025-03-26 04:07:59,932 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Inc\main.h_save
+2025-03-26 04:08:00,059 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Inc\main.h
+2025-03-26 04:08:00,088 [INFO] CodeEngine:263 - oldGeneratedFile, C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Src\main.c_save
+2025-03-26 04:08:00,219 [INFO] CodeEngine:287 - Generated code: C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\Core\Src\main.c
+2025-03-26 04:08:00,753 [INFO] ProjectBuilder:3324 - Time for Copy HAL[1] : 367mS.
+2025-03-26 04:08:00,761 [INFO] ProjectBuilder:4912 - Project Generator version: 4.6.0-B36
+2025-03-26 04:08:00,834 [INFO] ConfigFileManager:1590 - The Die is : DIE456
+2025-03-26 04:08:02,376 [INFO] ProjectBuilder:5191 - Time for Generating toolchain IDE Files: 1615mS.
+2025-03-26 04:08:02,379 [INFO] ProjectBuilder:3181 - Time for Copy CMSIS : 1mS.
+2025-03-26 04:08:02,383 [INFO] ProjectBuilder:3181 - Time for Copy CMSIS : 0mS.

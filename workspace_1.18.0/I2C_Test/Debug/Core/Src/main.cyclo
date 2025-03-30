@@ -1,0 +1,12 @@
+../Drivers/CMSIS/Include/core_cm4.h:2064:26:ITM_SendChar	4
+../Core/Src/main.c:93:6:MPU6050_Init	2
+../Core/Src/main.c:123:6:MPU6050_Read_Accel	1
+../Core/Src/main.c:146:6:MPU6050_Read_Gyro	1
+../Core/Src/main.c:174:6:SWV_Debug	1
+../Core/Src/main.c:187:5:main	1
+../Core/Src/main.c:241:6:SystemClock_Config	3
+../Core/Src/main.c:287:13:MX_I2C1_Init	2
+../Core/Src/main.c:321:13:MX_USART2_UART_Init	2
+../Core/Src/main.c:354:13:MX_GPIO_Init	1
+../Core/Src/main.c:389:5:_write	2
+../Core/Src/main.c:406:6:Error_Handler	1

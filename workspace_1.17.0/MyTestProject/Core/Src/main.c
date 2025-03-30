@@ -40,6 +40,8 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+I2C_HandleTypeDef hi2c1;
+
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
@@ -50,6 +52,7 @@ UART_HandleTypeDef huart2;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_I2C1_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -93,7 +96,17 @@ int main(void)
 
   #define PRECHARGE_DELAY_MS       5000
 
-  bool precharge_completed = false;
+  bool precharge_completed_flag = false;
+
+#include "stm32f4xx_hal.h"
+#include <stdio.h>
+
+#define MPU6050_ADDR 0xD0  // Default I2C address (0x68 << 1 for HAL compatibility)
+#define WHO_AM_I_REG 0x75  // WHO_AM_I register address
+#define PWR_MGMT_1 0x6B    // Power Management 1 register
+#define ACCEL_XOUT_H 0x3B  // Accelerometer X high byte register
+
+extern I2C_HandleTypeDef hi2c1;  // Assuming I2C1 is used
 
   /* USER CODE END Init */
 
@@ -107,6 +120,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -115,42 +129,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-      // Read the state of the precharge signal input.
-      GPIO_PinState precharge_signal = HAL_GPIO_ReadPin(PRECHARGE_SIGNAL_PORT, PRECHARGE_SIGNAL_PIN);
+    /* USER CODE END WHILE */
 
-      // If the precharge signal is active and the precharge sequence hasn't been executed yet
-      if (precharge_signal == GPIO_PIN_SET && !precharge_completed_flag)
-      {
-          // Activate the Negative Relay
-          HAL_GPIO_WritePin(NEG_RELAY_PORT, NEG_RELAY_PIN, GPIO_PIN_SET);
-
-          // Activate the PC Relay (engaging the precharge circuit)
-          HAL_GPIO_WritePin(PC_RELAY_PORT, PC_RELAY_PIN, GPIO_PIN_SET);
-
-          // Wait for the precharge period to allow bus/capacitor charging
-          HAL_Delay(PRECHARGE_DELAY_MS);
-
-          // Disable the PC Relay
-          HAL_GPIO_WritePin(PC_RELAY_PORT, PC_RELAY_PIN, GPIO_PIN_RESET);
-
-          // Activate the Positive Relay
-          HAL_GPIO_WritePin(POS_RELAY_PORT, POS_RELAY_PIN, GPIO_PIN_SET);
-
-          // Set the flag to indicate the precharge sequence has been completed
-          precharge_completed = true;
-      }
-      // If the precharge signal is inactive, reset the flag and all relays
-      else if (precharge_signal == GPIO_PIN_RESET)
-      {
-          HAL_GPIO_WritePin(POS_RELAY_PORT, POS_RELAY_PIN, GPIO_PIN_RESET);
-          HAL_GPIO_WritePin(NEG_RELAY_PORT, NEG_RELAY_PIN, GPIO_PIN_RESET);
-          HAL_GPIO_WritePin(PC_RELAY_PORT, PC_RELAY_PIN, GPIO_PIN_RESET);
-
-          // Reset the flag to allow the sequence to run again when signal goes high next time
-          precharge_completed_flag = false;
-      }
+    /* USER CODE BEGIN 3 */
   }
-  }
+  /* USER CODE END 3 */
+}
 
 /**
   * @brief System Clock Configuration
@@ -199,6 +183,40 @@ void SystemClock_Config(void)
 }
 
 /**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C1_Init(void)
+{
+
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -239,8 +257,8 @@ static void MX_USART2_UART_Init(void)
 static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
+  /* USER CODE BEGIN MX_GPIO_Init_1 */
+  /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
@@ -280,8 +298,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
 
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
+  /* USER CODE BEGIN MX_GPIO_Init_2 */
+  /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
