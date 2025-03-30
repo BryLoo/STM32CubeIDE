@@ -91,7 +91,7 @@ void MPU6050_Init (void)
 
 	// check device ID WHO_AM_I
 	HAL_I2C_Mem_Read (&hi2c1, MPU6050_ADDR, 0x75, 1, &check, 1, 1000);
-	if (0x68 == 0x68)  // 0x68 will be returned by the sensor if everything goes well
+	if (check == 0x68)  // 0x68 will be returned by the sensor if everything goes well
 	{
 		// power management register 0X6B we should write all 0's to wake the sensor up
 		Data = 0;
@@ -118,7 +118,7 @@ void MPU6050_Read_Accel (void)
 	uint8_t Rec_Data[6];
 
 	// Read 6 BYTES of data starting from ACCEL_XOUT_H (0x3B) register
-	HAL_I2C_Mem_Read (&hi2c1, MPU6050_ADDR, 0x43, 1, Rec_Data, 6, 1000);
+	HAL_I2C_Mem_Read (&hi2c1, MPU6050_ADDR, 0x3B, 1, Rec_Data, 6, 1000);
 
 	Accel_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data [1]);
 	Accel_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data [3]);
@@ -140,7 +140,7 @@ void MPU6050_Read_Gyro (void)
 	uint8_t Rec_Data[6];
 
 	// Read 6 BYTES of data starting from GYRO_XOUT_H register
-	HAL_I2C_Mem_Read (&hi2c1, MPU6050_ADDR, 0x3B, 1, Rec_Data, 6, 1000);
+	HAL_I2C_Mem_Read (&hi2c1, MPU6050_ADDR, 0x43, 1, Rec_Data, 6, 1000);
 
 	Gyro_X_RAW = (int16_t)(Rec_Data[0] << 8 | Rec_Data [1]);
 	Gyro_Y_RAW = (int16_t)(Rec_Data[2] << 8 | Rec_Data [3]);
@@ -164,11 +164,9 @@ void MPU6050_Read_Gyro (void)
 
 void SWV_Debug (void)
 {
-	//printf("Gyro_X_RAW: %d\n", Gyro_X_RAW);
+	printf("Gyro_X_RAW: %d\n", Gyro_X_RAW);
 	printf("check: %d\n", check);
 	printf("Gx: %f\n", Gx);
-	printf("Gy: %f\n", Gy);
-	printf("Gz: %f\n", Gz);
 }
 
 /* USER CODE END 0 */
@@ -221,7 +219,7 @@ int main(void)
 	  MPU6050_Read_Accel();
 	  MPU6050_Read_Gyro();
 	  SWV_Debug();
-	  HAL_Delay(250);
+	  HAL_Delay(100);
 
   }
   /* USER CODE END 3 */

@@ -91,7 +91,7 @@ void MPU6050_Init (void)
 
 	// check device ID WHO_AM_I
 	HAL_I2C_Mem_Read (&hi2c1, MPU6050_ADDR, 0x75, 1, &check, 1, 1000);
-	if (0x68 == 0x68)  // 0x68 will be returned by the sensor if everything goes well
+	if (check == 0x68)  // 0x68 will be returned by the sensor if everything goes well
 	{
 		// power management register 0X6B we should write all 0's to wake the sensor up
 		Data = 0;
