@@ -37,15 +37,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  000167d4  00000000  00000000  0001540d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000c2b7  00000000  00000000  0002bbe1  2**0
+ 17 .debug_line   0000c2b5  00000000  00000000  0002bbe1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00089526  00000000  00000000  00037e98  2**0
+ 18 .debug_str    00089526  00000000  00000000  00037e96  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000c13be  2**0
+ 19 .comment      00000043  00000000  00000000  000c13bc  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00003938  00000000  00000000  000c1404  2**2
+ 20 .debug_frame  00003938  00000000  00000000  000c1400  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000075  00000000  00000000  000c4d3c  2**0
+ 21 .debug_line_str 00000075  00000000  00000000  000c4d38  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -1651,23 +1651,11 @@ int main(void)
 {
  80011f8:	b580      	push	{r7, lr}
  80011fa:	af00      	add	r7, sp, #0
-  /* USER CODE END 1 */
 
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+  HAL_Init(); // Reset peripherals, Init Flash, & Systick.
  80011fc:	f000 fb36 	bl	800186c <HAL_Init>
-  /* USER CODE BEGIN Init */
-
-  /* USER CODE END Init */
-
-  /* Configure the system clock */
-  SystemClock_Config();
+  SystemClock_Config(); // Configure the system clock
  8001200:	f000 f814 	bl	800122c <SystemClock_Config>
-  /* USER CODE BEGIN SysInit */
-
-  /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();

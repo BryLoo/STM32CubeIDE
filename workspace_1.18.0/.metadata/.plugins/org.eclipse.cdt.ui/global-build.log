@@ -1,21 +1,819 @@
-23:42:38 **** Incremental Build of configuration Debug for project I2C_Test ****
+23:42:37 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
 make -j20 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "I2C_Test.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\I2C_Test\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="I2C_Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: I2C_Test.elf
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
  
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25372	    104	   2256	  27732	   6c54	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+23:42:48 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25372	    104	   2256	  27732	   6c54	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+23:46:38 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+23:46:40 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
 arm-none-eabi-size  I2C_Test.elf 
-arm-none-eabi-objdump -h -S I2C_Test.elf  > "I2C_Test.list"
    text	   data	    bss	    dec	    hex	filename
   27292	    468	   2100	  29860	   74a4	I2C_Test.elf
 Finished building: default.size.stdout
  
-Finished building: I2C_Test.list
+23:46:41 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
  
-23:42:43 **** Incremental Build of configuration Debug for project I2C_Test ****
+23:46:42 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'LTC4151_Read':
+../Core/Src/main.c:91:21: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+   91 |     printf("Test1: %d\n", first);
+      |                    ~^     ~~~~~
+      |                     |     |
+      |                     int   uint8_t * {aka unsigned char *}
+      |                    %hhn
+../Core/Src/main.c:92:21: warning: format '%d' expects argument of type 'int', but argument 2 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+   92 |     printf("Test2: %d\n", second);
+      |                    ~^     ~~~~~~
+      |                     |     |
+      |                     int   uint8_t * {aka unsigned char *}
+      |                    %hhn
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+23:48:16 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+23:48:17 **** Incremental Build of configuration Debug for project I2C_Test ****
 make -j20 all 
 arm-none-eabi-size  I2C_Test.elf 
    text	   data	    bss	    dec	    hex	filename
   27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+23:48:18 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+23:48:19 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'LTC4151_Read':
+../Core/Src/main.c:91:23: warning: format '%hhu' expects argument of type 'int', but argument 2 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+   91 |     printf("Test1: %hhu\n", first);
+      |                    ~~~^     ~~~~~
+      |                       |     |
+      |                       int   uint8_t * {aka unsigned char *}
+      |                    %hhn
+../Core/Src/main.c:92:23: warning: format '%hhu' expects argument of type 'int', but argument 2 has type 'uint8_t *' {aka 'unsigned char *'} [-Wformat=]
+   92 |     printf("Test2: %hhu\n", second);
+      |                    ~~~^     ~~~~~~
+      |                       |     |
+      |                       int   uint8_t * {aka unsigned char *}
+      |                    %hhn
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25372	    104	   2256	  27732	   6c54	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+23:48:53 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+23:48:53 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+23:48:54 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+23:48:55 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'LTC4151_Read':
+../Core/Src/main.c:91:27: error: expected expression before 'int'
+   91 |     printf("Test1: %d\n", int(first));
+      |                           ^~~
+../Core/Src/main.c:92:27: error: expected expression before 'int'
+   92 |     printf("Test2: %d\n", int(second));
+      |                           ^~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+23:49:18 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+23:49:19 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+23:49:20 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+23:49:21 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+23:49:26 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+23:53:52 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+23:53:53 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+23:53:54 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+23:53:55 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+23:54:03 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+23:57:19 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+23:57:32 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+23:58:30 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+23:59:55 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+23:59:56 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+23:59:57 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+23:59:58 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+00:00:08 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25364	    104	   2256	  27724	   6c4c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+00:07:25 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+00:07:26 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+00:07:27 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+00:07:28 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'LTC4151_Read':
+../Core/Src/main.c:93:5: error: 'test1' undeclared (first use in this function)
+   93 |     test1 = first[0] & and1;
+      |     ^~~~~
+../Core/Src/main.c:93:5: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+00:07:37 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+00:07:38 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+00:07:39 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+00:07:39 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25328	    104	   2256	  27688	   6c28	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+00:07:46 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25328	    104	   2256	  27688	   6c28	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+00:09:47 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+00:09:48 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+00:09:49 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+00:09:50 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25368	    104	   2256	  27728	   6c50	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+00:09:54 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+00:09:55 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+00:09:56 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+00:09:57 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F401xE -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Relay_Controller_STM_32_Debug.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM_32_Debug\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM_32_Debug.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Relay_Controller_STM_32_Debug.elf
+ 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+arm-none-eabi-objdump -h -S Relay_Controller_STM_32_Debug.elf  > "Relay_Controller_STM_32_Debug.list"
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+Finished building: Relay_Controller_STM_32_Debug.list
+ 
+00:10:03 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+00:49:28 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+15:10:05 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+15:10:06 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+15:10:07 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+15:10:08 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:33:16 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5112	     12	   1572	   6696	   1a28	A1.elf
+Finished building: default.size.stdout
+ 
+16:40:43 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4A6xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:25:1: error: unknown type name 'var_type'
+   25 | var_type TestFunction(var_type num);
+      | ^~~~~~~~
+../Core/Src/main.c:25:23: error: unknown type name 'var_type'
+   25 | var_type TestFunction(var_type num);
+      |                       ^~~~~~~~
+../Core/Src/main.c:27:6: warning: return type of 'main' is not 'int' [-Wmain]
+   27 | void main(void)  {
+      |      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:28:3: error: unknown type name 'var_type'
+   28 |   var_type main_var;
+      |   ^~~~~~~~
+../Core/Src/main.c:46:14: warning: implicit declaration of function 'TestFunction' [-Wimplicit-function-declaration]
+   46 |   main_var = TestFunction(15);            // call test function
+      |              ^~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:53:1: error: unknown type name 'var_type'
+   53 | var_type TestFunction(var_type num) {
+      | ^~~~~~~~
+../Core/Src/main.c:53:23: error: unknown type name 'var_type'
+   53 | var_type TestFunction(var_type num) {
+      |                       ^~~~~~~~
+../Core/Src/main.c:69:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+   69 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+16:40:44 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:40:45 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:40:46 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:41:59 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4A6xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:25:1: error: unknown type name 'var_type'
+   25 | var_type TestFunction(var_type num);
+      | ^~~~~~~~
+../Core/Src/main.c:25:23: error: unknown type name 'var_type'
+   25 | var_type TestFunction(var_type num);
+      |                       ^~~~~~~~
+../Core/Src/main.c:27:6: warning: return type of 'main' is not 'int' [-Wmain]
+   27 | void main(void)  {
+      |      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:28:3: error: unknown type name 'var_type'
+   28 |   var_type main_var;
+      |   ^~~~~~~~
+../Core/Src/main.c:46:14: warning: implicit declaration of function 'TestFunction' [-Wimplicit-function-declaration]
+   46 |   main_var = TestFunction(15);            // call test function
+      |              ^~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:53:1: error: unknown type name 'var_type'
+   53 | var_type TestFunction(var_type num) {
+      | ^~~~~~~~
+../Core/Src/main.c:53:23: error: unknown type name 'var_type'
+   53 | var_type TestFunction(var_type num) {
+      |                       ^~~~~~~~
+../Core/Src/main.c:113:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  113 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+16:42:00 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:42:01 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:42:02 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:43:06 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4A6xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:25:18: error: unknown type name 'var_type'
+   25 | int TestFunction(var_type num);
+      |                  ^~~~~~~~
+../Core/Src/main.c:27:6: warning: return type of 'main' is not 'int' [-Wmain]
+   27 | void main(void)  {
+      |      ^~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:46:14: warning: implicit declaration of function 'TestFunction' [-Wimplicit-function-declaration]
+   46 |   main_var = TestFunction(15);            // call test function
+      |              ^~~~~~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:53:18: error: unknown type name 'var_type'
+   53 | int TestFunction(var_type num) {
+      |                  ^~~~~~~~
+../Core/Src/main.c:113:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  113 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+16:43:08 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:43:09 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:43:10 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:43:22 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4A6xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:27:6: warning: return type of 'main' is not 'int' [-Wmain]
+   27 | void main(void)  {
+      |      ^~~~
+../Core/Src/main.c:53:18: error: unknown type name 'var_type'
+   53 | int TestFunction(var_type num) {
+      |                  ^~~~~~~~
+../Core/Src/main.c:113:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  113 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+16:43:23 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:43:24 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:43:25 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:44:13 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4A6xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:27:6: warning: return type of 'main' is not 'int' [-Wmain]
+   27 | void main(void)  {
+      |      ^~~~
+../Core/Src/main.c: In function 'TestFunction':
+../Core/Src/main.c:55:3: error: unknown type name 'var_type'
+   55 |   var_type test_var;                            // local variable
+      |   ^~~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:113:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  113 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j20 all" terminated with exit code 2. Build might be incomplete.
+16:44:15 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:44:15 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:44:16 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:44:20 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4A6xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c:27:6: warning: return type of 'main' is not 'int' [-Wmain]
+   27 | void main(void)  {
+      |      ^~~~
+../Core/Src/main.c:113:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+  113 | static void MX_GPIO_Init(void)
+      |             ^~~~~~~~~~~~
+../Core/Src/main.c: In function 'TestFunction':
+../Core/Src/main.c:61:10: warning: 'test_var' is used uninitialized [-Wuninitialized]
+   61 |   return test_var;
+      |          ^~~~~~~~
+../Core/Src/main.c:55:7: note: 'test_var' was declared here
+   55 |   int test_var;                                 // local variable
+      |       ^~~~~~~~
+arm-none-eabi-gcc -o "A1.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\A1\STM32L4A6ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="A1.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: A1.elf
+ 
+arm-none-eabi-size  A1.elf 
+arm-none-eabi-objdump -h -S A1.elf  > "A1.list"
+   text	   data	    bss	    dec	    hex	filename
+   5264	     12	   1572	   6848	   1ac0	A1.elf
+Finished building: default.size.stdout
+ 
+Finished building: A1.list
+ 
+16:44:22 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:44:23 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:44:23 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:50:31 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5264	     12	   1572	   6848	   1ac0	A1.elf
+Finished building: default.size.stdout
+ 
+16:50:32 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:50:33 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:50:33 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
+Finished building: default.size.stdout
+ 
+16:50:42 **** Incremental Build of configuration Debug for project A1 ****
+make -j20 all 
+arm-none-eabi-size  A1.elf 
+   text	   data	    bss	    dec	    hex	filename
+   5264	     12	   1572	   6848	   1ac0	A1.elf
+Finished building: default.size.stdout
+ 
+16:50:43 **** Incremental Build of configuration Debug for project I2C_Test ****
+make -j20 all 
+arm-none-eabi-size  I2C_Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  27292	    468	   2100	  29860	   74a4	I2C_Test.elf
+Finished building: default.size.stdout
+ 
+16:50:44 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM32.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11924	     12	   1836	  13772	   35cc	Relay_Controller_STM32.elf
+Finished building: default.size.stdout
+ 
+16:50:45 **** Incremental Build of configuration Debug for project Relay_Controller_STM_32_Debug ****
+make -j20 all 
+arm-none-eabi-size  Relay_Controller_STM_32_Debug.elf 
+   text	   data	    bss	    dec	    hex	filename
+  25396	    104	   2256	  27756	   6c6c	Relay_Controller_STM_32_Debug.elf
 Finished building: default.size.stdout
  
