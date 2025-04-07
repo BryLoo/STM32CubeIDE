@@ -22,6 +22,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
+#include <stdint.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -65,39 +66,64 @@ static void MX_I2C1_Init(void);
 #define LTC4151_ADDR 0x67 //page 11 for ADR1 H and ADR0 L, left shift by 1
 #define CTRL_REGISTER 0x06 //hexadecimal address 6
 #define CTRL_ADDR_CONFIG 0x0C //hexadecimal for 00001100 config
+#define VIN_REGISTER_A 0x00
+#define VIN_REGISTER_B 0x01
 #define VIN_REGISTER_C 0x02
 #define VIN_REGISTER_D 0x03
 
 //uint8_t CTRL_ADDR_CONFIG = 0x0C;
 
+/* FORMAT
+HAL_I2C_Master_Transmit(hi2c, DevAddress (8 bits), pData, Size, Timeout);
+HAL_I2C_Master_Read(hi2c, DevAddress | 0x01 (8 bits), pData, Size, Timeout);
+*/
+
 void LTC4151_Init(void)
 {
-    uint8_t dataBuffer[1];
-    dataBuffer[0] = 0x0C;
-    // Write only one byte to the control register
-    HAL_I2C_Mem_Write(&hi2c1, (LTC4151_ADDR << 1), CTRL_REGISTER, I2C_MEMADD_SIZE_8BIT, dataBuffer, 1, 1000);
+	/*
+	CONTROL Register G (0x06) 0b00001100
+	*/
+    uint8_t Config = 0x0C; //initialize 8 bit (1 byte) unsigned integer
+    uint8_t *pConfig = &Config; //create pointer to hold address of Config data
+
+    HAL_StatusTypeDef status = HAL_I2C_Mem_Write(&hi2c1, (LTC4151_ADDR << 1), CTRL_REGISTER, I2C_MEMADD_SIZE_8BIT, pConfig, 1, 1000000);
+	if (status == HAL_OK)
+	{
+		printf("I2C Write OK: Value 0x%02X written to register 0x%02X.\n", Config, CTRL_REGISTER);
+	}
+	else
+	{
+		printf("I2C Write Error: HAL_Status = %d\n", status);
+	}
 }
 
 void LTC4151_Read(void)
 {
-	uint8_t first[1];
-	uint8_t second[1];
+    /*
+     * Vin Register A (0x02) and B (0x03) A7:0, B7:4
+     * HAL_I2C_Master_Read(hi2c, DevAddress (8 bits), pData, Size (# of Bytes), Timeout);
+     */
+    uint8_t Data1, Data2;
+    HAL_StatusTypeDef status1, status2;
 
-    // Read one byte from each register
-    HAL_I2C_Mem_Read(&hi2c1, (LTC4151_ADDR << 1), 0x02, I2C_MEMADD_SIZE_8BIT, first, 1, 1000);
-    HAL_I2C_Mem_Read(&hi2c1, (LTC4151_ADDR << 1), 0x03, I2C_MEMADD_SIZE_8BIT, second, 1, 1000);
-    // If needed, combine the two register values (12-bit result)
-    // uint16_t result = ((uint16_t)first << 4) | (second >> 4);
+    status1 = HAL_I2C_Mem_Read(&hi2c1, (LTC4151_ADDR << 1), VIN_REGISTER_C, I2C_MEMADD_SIZE_8BIT, &Data1, 1, 1000000);
+    status2 = HAL_I2C_Mem_Read(&hi2c1, (LTC4151_ADDR << 1), VIN_REGISTER_D, I2C_MEMADD_SIZE_8BIT, &Data2, 1, 1000000);
 
-    int and1 = 000011111111;
-    int test1 = first[0] & and1;
+    if (status1 != HAL_OK)
+    {
+        printf("I2C Read Error from VIN_REGISTER_C: %d\n", status1);
+        LTC4151_Init(); //Reinitialize Device
+    }
+    if (status2 != HAL_OK)
+    {
+        printf("I2C Read Error from VIN_REGISTER_D: %d\n", status2);
+        LTC4151_Init(); //Reinitialize Device
+    }
 
-    int and2 = 11110000;
-    int test2 = first[0] & and2;
+    // Combine the data (check datasheet)
+    int Data = (Data1 << 4) | (Data2 >> 4);
 
-
-    printf("Test1: %d\n", test1);
-    printf("Test2: %d\n", test2);
+    printf("Value: %u\n", Data / 40);
 }
 
 
@@ -215,7 +241,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.ClockSpeed = 1500;
   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
