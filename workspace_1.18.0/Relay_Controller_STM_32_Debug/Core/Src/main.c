@@ -23,6 +23,7 @@
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
 #include <stdint.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,12 +72,24 @@ static void MX_I2C1_Init(void);
 #define VIN_REGISTER_C 0x02
 #define VIN_REGISTER_D 0x03
 
-//uint8_t CTRL_ADDR_CONFIG = 0x0C;
+#define Threshold_Voltage 0x14 //20 Volts
 
-/* FORMAT
-HAL_I2C_Master_Transmit(hi2c, DevAddress (8 bits), pData, Size, Timeout);
-HAL_I2C_Master_Read(hi2c, DevAddress | 0x01 (8 bits), pData, Size, Timeout);
-*/
+#define PositivePin GPIO_PIN_0
+#define NegativePin GPIO_PIN_1
+#define PrechargePin GPIO_PIN_0
+
+#define PositivePort GPIOB
+#define NegativePort GPIOC
+#define PrechargePort GPIOC
+
+#define ButtonPort GPIOC
+#define ButtonPin GPIO_PIN_13
+
+int Current_Voltage;
+static bool prechargeCompleted = 0;
+int Button_Status = 0;
+
+uint32_t maxTimeout = 5500; // Set a maximum allowed time (e.g., 5.5 seconds) to avoid an infinite loop.
 
 void LTC4151_Init(void)
 {
@@ -121,9 +134,66 @@ void LTC4151_Read(void)
     }
 
     // Combine the data (check datasheet)
-    int Data = (Data1 << 4) | (Data2 >> 4);
+    Current_Voltage = ( (Data1 << 4) | (Data2 >> 4) ) / 40;
 
-    printf("Value: %u\n", Data / 40);
+    printf("Value: %u\n", Current_Voltage);
+}
+
+void PrechargeProcedure(void) {
+
+
+    // Check if precharge has already been completed.
+    if (prechargeCompleted) {
+        return;
+    }
+
+    // Read the button status.
+    Button_Status = !HAL_GPIO_ReadPin(ButtonPort, ButtonPin); //Button state is flipped
+    printf("Button: %d\n", Button_Status);
+
+    // Check if the button is pressed
+    if (Button_Status == 1) {
+        // Turn on Debug LED.
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+
+        // Enable Precharge and Negative circuits.
+        HAL_GPIO_WritePin(PrechargePort, PrechargePin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(NegativePort, NegativePin, GPIO_PIN_SET);
+
+        // Record the start time.
+        uint32_t startTick = HAL_GetTick();
+        bool conditionsMet = false;
+
+        // Loop until both conditions are met or the max timeout is reached:
+        // 1. 5 seconds have elapsed.
+        // 2. Current_Voltage is greater than Threshold_Voltage.
+        while ((HAL_GetTick() - startTick) < maxTimeout) {
+            if (((HAL_GetTick() - startTick) >= 5000) && (Current_Voltage > Threshold_Voltage)) {
+                conditionsMet = true;
+                break;
+            }
+            //Small delay to reduce CPU usage
+            HAL_Delay(10);
+        }
+
+        if (conditionsMet) {
+            //Conditions are met: enable Positive circuit.
+            HAL_GPIO_WritePin(PositivePort, PositivePin, GPIO_PIN_SET);
+
+            //Set the flag to indicate the precharge has run.
+			prechargeCompleted = true;
+        } else {
+
+            HAL_GPIO_WritePin(NegativePort, NegativePin, GPIO_PIN_RESET); //Disable the Negative Pin
+            prechargeCompleted = false;
+        }
+
+        // Disable the precharge circuit.
+        HAL_GPIO_WritePin(PrechargePort, PrechargePin, GPIO_PIN_RESET);
+        // Turn off the Debug LED.
+        HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+
+    }
 }
 
 
@@ -162,6 +232,9 @@ int main(void)
   MX_USART2_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+  HAL_GPIO_WritePin(PrechargePort, PrechargePin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(NegativePort, NegativePin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(PositivePort, PositivePin, GPIO_PIN_RESET);
   LTC4151_Init();
   HAL_Delay(500);
   /* USER CODE END 2 */
@@ -330,7 +403,13 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, PC_Pin|Neg_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(Pos_GPIO_Port, Pos_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : B1_Pin */
   GPIO_InitStruct.Pin = B1_Pin;
@@ -338,12 +417,26 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(B1_GPIO_Port, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : PC_Pin Neg_Pin */
+  GPIO_InitStruct.Pin = PC_Pin|Neg_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
   /*Configure GPIO pin : LD2_Pin */
   GPIO_InitStruct.Pin = LD2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD2_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : Pos_Pin */
+  GPIO_InitStruct.Pin = Pos_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(Pos_GPIO_Port, &GPIO_InitStruct);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
 
