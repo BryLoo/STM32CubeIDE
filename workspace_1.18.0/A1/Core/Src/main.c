@@ -21,45 +21,43 @@
 #include "main.h"
 #include <math.h>
 
+#define GPIOC_BSRR_OFFSET 0x18 //provided in pg 307 of manual
+#define GPIOC_BASE_REG (*(volatile uint32_t *)(GPIOC_BASE + GPIOC_BSRR_OFFSET)) //base address for GPIOC reg
+
+typedef int32_t var_type; //global data type change
+
 void SystemClock_Config(void);
-int TestFunction(int num);
 
 void main(void)  {
-  int main_var;
 
   HAL_Init();
   SystemClock_Config();
 
   // configure GPIO pins PC0, PC1 for:
   // output mode, push-pull, no pull up or pull down, high speed
-  RCC->AHB2ENR   |=  (RCC_AHB2ENR_GPIOCEN);
-  GPIOC->MODER   &= ~(GPIO_MODER_MODE0 | GPIO_MODER_MODE1);
-  GPIOC->MODER   |=  (GPIO_MODER_MODE0_0 | GPIO_MODER_MODE1_0);
-  GPIOC->OTYPER  &= ~(GPIO_OTYPER_OT0 | GPIO_OTYPER_OT1);
-  GPIOC->PUPDR   &= ~(GPIO_PUPDR_PUPD0 | GPIO_PUPDR_PUPD1);
-  GPIOC->OSPEEDR |=  ((3 << GPIO_OSPEEDR_OSPEED0_Pos) |
-                      (3 << GPIO_OSPEEDR_OSPEED1_Pos));
-  GPIOC->BRR = (GPIO_PIN_0 | GPIO_PIN_1); // preset PC0, PC1 to 0
 
-  // time the test function call using PC0
-  GPIOC->BSRR = (GPIO_PIN_0);             // turn on PC0
-  main_var = TestFunction(15);            // call test function
-  GPIOC->BRR = (GPIO_PIN_0);              // turn off PC0
+  //configure all 4 GPIO pins for LEDs
+  RCC->AHB2ENR   |=  (RCC_AHB2ENR_GPIOCEN); //Enable clock for GPIO Port C
+  GPIOC->MODER   &= ~(GPIO_MODER_MODE0 | GPIO_MODER_MODE1 | GPIO_MODER_MODE2 | GPIO_MODER_MODE3); //Clear any preexisting mode settings for Pins
+  GPIOC->MODER   |=  (GPIO_MODER_MODE0_0 | GPIO_MODER_MODE1_0 | GPIO_MODER_MODE2_0 | GPIO_MODER_MODE3_0); //Set pins as output (mode 0)
+  GPIOC->OTYPER  &= ~(GPIO_OTYPER_OT0 | GPIO_OTYPER_OT1 | GPIO_OTYPER_OT2 | GPIO_OTYPER_OT3); //Configure pins as push-pull
+  GPIOC->PUPDR   &= ~(GPIO_PUPDR_PUPD0 | GPIO_PUPDR_PUPD1 | GPIO_PUPDR_PUPD2 | GPIO_PUPDR_PUPD3); //Disable internal pull-up/down resistors
+  GPIOC->OSPEEDR |=  ((3 << GPIO_OSPEEDR_OSPEED0_Pos) | //Set High output speed for pins
+                      (3 << GPIO_OSPEEDR_OSPEED1_Pos) |
+					  (3 << GPIO_OSPEEDR_OSPEED2_Pos) |
+					  (3 << GPIO_OSPEEDR_OSPEED3_Pos)); //Reset aka clear the pins
+  GPIOC->BRR = (GPIO_PIN_0 | GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3); // preset pins to 0
 
-  while (1)      // infinite loop to avoid program exit
-    main_var++;  // added to eliminate not used warning
+
+    while(1) {
+		GPIOC->BSRR = (GPIO_PIN_0); //turn on PC0
+		HAL_Delay(1000);
+		GPIOC->BRR = (GPIO_PIN_0); //turn off PC0
+		HAL_Delay(1000);
+    }
 }
 
-int TestFunction(int num) {
 
-  int test_var;  				// local variable
-
-  GPIOC->BSRR = (GPIO_PIN_1);             // turn on PC1
-  /* USER insert test function here e.g. test_var = num; */
-  GPIOC->BRR = (GPIO_PIN_1);              // turn off PC1
-
-  return test_var;
-}
 
 /**
   * @brief System Clock Configuration

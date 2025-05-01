@@ -1,0 +1,20 @@
+/*
+ * timer.h
+ *
+ *  Created on: Apr 30, 2025
+ *      Author: blew2
+ */
+
+#ifndef INC_TIMER_H_
+#define INC_TIMER_H_
+
+
+
+#define PERIOD 399
+#define LED_PORT GPIOC
+#define LED_PIN GPIO_PIN_0
+//iDuty cycle is like 99
+
+
+
+#endif /* INC_TIMER_H_ */

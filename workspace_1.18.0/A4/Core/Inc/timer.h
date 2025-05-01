@@ -1,0 +1,27 @@
+/*
+ * timer.h
+ *
+ *  Created on: Apr 30, 2025
+ *      Author: blew2
+ */
+
+#ifndef INC_TIMER_H_
+#define INC_TIMER_H_
+
+#include "math.h"
+
+#define DUTY_CYCLE 50
+#define FREQ 5000
+
+
+#define CLOCK_FREQ 4000000
+#define LED_PORT GPIOC
+#define LED_PIN GPIO_PIN_0
+#define ISRTime_PORT GPIOC
+#define ISRTime_PIN GPIO_PIN_1
+
+#define PERIOD ( (CLOCK_FREQ / FREQ) - 1 ) // 4MHz / 5kHz = 800, 800 - 1 = 799
+#define MODIFIED_DUTY_CYCLE (( (100 - DUTY_CYCLE) * PERIOD) / 100 )  //((100-25)*799) / 100) = 599
+
+
+#endif /* INC_TIMER_H_ */

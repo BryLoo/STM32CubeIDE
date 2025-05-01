@@ -1,0 +1,179 @@
+/*******************************************************************************
+ * EE 329 A3 KEYPAD INTERFACE
+ *******************************************************************************
+ * @file : main.c
+ * @brief : operation of LCD w/ timer countdown & integration w/ keypad & LED
+ * project : EE 329 S'25 Assignment 3
+ * authors : Jesus Martinez, Bryan Lew
+ * version : 1
+ * date : 4/23/25
+ * compiler : STM32CubeIDE v.1.18.0
+ * target : NUCLEO-L4A6ZG
+ * clocks : 4 MHz MSI to AHB2
+ * @attention : (c) 2025 STMicroelectronics. All rights reserved.
+ *******************************************************************************
+ . . .
+ * 45678-1-2345678-2-2345678-3-2345678-4-2345678-5-2345678-6-2345678-7-234567 */
+
+#include "lcd.h"
+#include "delay.h"
+#include "main.h"
+#include "string.h"
+
+//configure GPIO for LCD
+void LCD_config(void) {
+	RCC->AHB2ENR |= RCC_AHB2ENR_GPIOEEN; // enabling clock for port E
+
+	//clear mode
+	LCD_PORT->MODER &= ~(GPIO_MODER_MODE2 |
+	GPIO_MODER_MODE3 |
+	GPIO_MODER_MODE4 |
+	GPIO_MODER_MODE5 |
+	GPIO_MODER_MODE6 |
+	GPIO_MODER_MODE7 |
+	GPIO_MODER_MODE8);
+
+	//set mode
+	LCD_PORT->MODER |= (GPIO_MODER_MODE2_0 |
+	GPIO_MODER_MODE3_0 |
+	GPIO_MODER_MODE4_0 |
+	GPIO_MODER_MODE5_0 |
+	GPIO_MODER_MODE6_0 |
+	GPIO_MODER_MODE7_0 |
+	GPIO_MODER_MODE8_0);
+
+	//output drive
+	LCD_PORT->OTYPER &= ~(GPIO_OTYPER_OT2 |
+	GPIO_OTYPER_OT3 |
+	GPIO_OTYPER_OT4 |
+	GPIO_OTYPER_OT5 |
+	GPIO_OTYPER_OT6 |
+	GPIO_OTYPER_OT7 |
+	GPIO_OTYPER_OT8);
+
+	//pull-up/down resistors
+	LCD_PORT->PUPDR &= ~(GPIO_PUPDR_PUPD2 |
+	GPIO_PUPDR_PUPD3 |
+	GPIO_PUPDR_PUPD4 |
+	GPIO_PUPDR_PUPD5 |
+	GPIO_PUPDR_PUPD6 |
+	GPIO_PUPDR_PUPD7 |
+	GPIO_PUPDR_PUPD8);
+
+	//speed
+	LCD_PORT->OSPEEDR &= ~(3 << GPIO_OSPEEDR_OSPEED2_Pos
+			| 3 << GPIO_OSPEEDR_OSPEED3_Pos | 3 << GPIO_OSPEEDR_OSPEED4_Pos
+			| 3 << GPIO_OSPEEDR_OSPEED5_Pos | 3 << GPIO_OSPEEDR_OSPEED6_Pos
+			| 3 << GPIO_OSPEEDR_OSPEED7_Pos | 3 << GPIO_OSPEEDR_OSPEED8_Pos);
+
+	//reset pins
+	LCD_PORT->BRR = (GPIO_MODER_MODE2 |
+	GPIO_MODER_MODE3 |
+	GPIO_MODER_MODE4 |
+	GPIO_MODER_MODE5 |
+	GPIO_MODER_MODE6 |
+	GPIO_MODER_MODE7 |
+	GPIO_MODER_MODE8);
+}
+
+////////////excerpt from lcd.c ///// PROVIDED CODE FROM PROFESSOR //////////////////////
+void LCD_init(void) {   	// RCC & GPIO config removed - leverage A1, A2 code
+	delay_us(40000);                    // power-up wait 40 MS
+	for (int idx = 0; idx < 3; idx++) { // wake up 1,2,3: DATA = 0011 XXXX
+		LCD_4b_command(0x30);            // HI 4b of 8b cmd, low nibble = X
+		delay_us(200);
+	}
+	LCD_4b_command(0x20); 				  // SWITCHING TO 4 BIT NIBBLE MODE
+												  //fcn set #4: 4b cmd set 4b mode - next 0x28:2-line
+	delay_us(40);         	// remainder of LCD init removed - see LCD datasheets
+
+	LCD_command(LCD_function_set);
+	delay_us(40);
+	LCD_command(LCD_set_cursor);
+	delay_us(40);
+	LCD_command(LCD_display_on);// turn on display , turn on cursor, enable blinking
+	delay_us(40);
+	LCD_command(LCD_entry_mode_set);
+	delay_us(40);
+	LCD_command(LCD_clear_display);		  // clears display
+	delay_us(2000);					     // 2 MS
+	LCD_command(LCD_return_home);
+	delay_us(40);
+	LCD_command(0x80); 	// 1000x0000 TELLING TO START AT LINE 1 OF DDRAM ADDRESS
+	delay_us(40);
+}
+
+void LCD_pulse_ENA(void) {
+	// ENAble line sends command on falling edge
+	// set to restore default then clear to trigger
+	LCD_PORT->ODR |= ( LCD_PIN_EN);      // ENABLE = HI
+	delay_us(20);                         // TDDR > 320 ns
+	LCD_PORT->ODR &= ~( LCD_PIN_EN);     // ENABLE = LOW
+	delay_us(20);                         // low values flakey, see A3:p.1
+}
+
+void LCD_4b_command(uint8_t command) {
+// LCD command using high nibble only - used for 'wake-up' 0x30 commands
+	LCD_PORT->ODR &= ~( LCD_DATA_BITS); 			 // clear DATA bits
+	LCD_PORT->ODR |= (command >> 4);   		    // DATA = command
+	delay_us(20);
+	LCD_pulse_ENA();
+}
+
+void LCD_command(uint8_t command) {
+// send command to LCD in 4-bit instruction mode
+// HIGH nibble then LOW nibble, timing sensitive
+	LCD_PORT->ODR &= ~( LCD_DATA_BITS);          // isolate cmd bits
+	LCD_PORT->ODR |= ((command >> 4) & 0x0F) << 5; // HIGH shifted low
+	delay_us(20);
+	LCD_pulse_ENA();                               // latch HIGH NIBBLE
+	delay_us(400);
+
+	LCD_PORT->ODR &= ~( LCD_DATA_BITS);          // isolate cmd bits
+	LCD_PORT->ODR |= (command & 0x0F) << 5;      // LOW nibble
+	delay_us(20);
+	LCD_pulse_ENA();                               // latch LOW NIBBLE
+	delay_us(400);
+}
+
+void LCD_write_char(uint8_t letter) {
+
+	LCD_PORT->ODR |= (LCD_PIN_RS);     // RS = HI for data to address SET EQUAL 1
+	LCD_PORT->ODR &= ~(LCD_PIN_RW); 	   //RW = 0 for data
+	delay_us(20);
+	LCD_command(letter);             	   // character to print
+	LCD_PORT->ODR &= ~(LCD_PIN_RS);      // RS = LO
+}
+///////////////////////////////////////END OF PROVIDED CODE FROM PROFESSOR/////////////
+void LCD_setcursor(uint8_t row, uint8_t col) {
+	uint8_t address;
+
+	//switch statement to select top or bottom row
+	switch (row) {
+
+	//top row
+	case (0):
+		address = 0x80 + col;
+		break;
+
+		//bot row
+	case (1):
+		address = 0xC0 + col;
+		break;
+	default:
+		return;
+	}
+	LCD_command(address);
+	delay_us(40);	//40us
+}
+
+//write string to LCD function
+void LCD_write_string(const char *str) {
+
+	//write each individual character of string in for loop
+	for (int i = 0; i < strlen(str); i++) {
+		LCD_write_char(str[i]);
+		delay_us(50);
+	}
+}
+

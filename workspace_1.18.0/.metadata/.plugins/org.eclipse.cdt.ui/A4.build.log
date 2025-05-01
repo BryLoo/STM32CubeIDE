@@ -1,0 +1,17 @@
+19:10:21 **** Incremental Build of configuration Debug for project A4 ****
+make -j20 all 
+arm-none-eabi-gcc "../Core/Src/timer.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L4A6xx -c -I../Core/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc -I../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/timer.d" -MT"Core/Src/timer.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/timer.o"
+arm-none-eabi-gcc -o "A4.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\A4\STM32L4A6ZGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="A4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: A4.elf
+ 
+arm-none-eabi-size  A4.elf 
+arm-none-eabi-objdump -h -S A4.elf  > "A4.list"
+   text	   data	    bss	    dec	    hex	filename
+   5432	     12	   1572	   7016	   1b68	A4.elf
+Finished building: default.size.stdout
+ 
+Finished building: A4.list
+ 
+
+19:10:23 Build Finished. 0 errors, 0 warnings. (took 2s.711ms)
+

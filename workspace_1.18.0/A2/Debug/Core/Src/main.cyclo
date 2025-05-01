@@ -1,0 +1,7 @@
+../Drivers/CMSIS/Include/core_cm4.h:2059:26:ITM_SendChar	4
+../Core/Src/main.c:34:6:main	2
+../Core/Src/main.c:58:6:LED_Setup	1
+../Core/Src/main.c:71:6:SystemClock_Config	4
+../Core/Src/main.c:116:13:MX_GPIO_Init	1
+../Core/Src/main.c:181:5:_write	2
+../Core/Src/main.c:197:6:Error_Handler	1

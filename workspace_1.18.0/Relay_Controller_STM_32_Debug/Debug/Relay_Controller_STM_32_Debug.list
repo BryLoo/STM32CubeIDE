@@ -599,7 +599,7 @@ void LTC4151_Read(void)
  80006a2:	4619      	mov	r1, r3
  80006a4:	4814      	ldr	r0, [pc, #80]	@ (80006f8 <LTC4151_Read+0x9c>)
  80006a6:	f004 ffc1 	bl	800562c <iprintf>
-        LTC4151_Init();
+        LTC4151_Init(); //Reinitialize Device
  80006aa:	f7ff ffa7 	bl	80005fc <LTC4151_Init>
     }
     if (status2 != HAL_OK)
@@ -612,7 +612,7 @@ void LTC4151_Read(void)
  80006b6:	4619      	mov	r1, r3
  80006b8:	4810      	ldr	r0, [pc, #64]	@ (80006fc <LTC4151_Read+0xa0>)
  80006ba:	f004 ffb7 	bl	800562c <iprintf>
-        LTC4151_Init();
+        LTC4151_Init(); //Reinitialize Device
  80006be:	f7ff ff9d 	bl	80005fc <LTC4151_Init>
     }
 

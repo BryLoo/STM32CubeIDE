@@ -3,6 +3,12 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="gpioc"/>
+		<item value="led"/>
+		<item value="mx_gpio_init"/>
+		<item value="bit0"/>
+		<item value="keypad_port"/>
+		<item value="C"/>
 		<item value="hi"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">

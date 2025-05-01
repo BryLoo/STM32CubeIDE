@@ -1,0 +1,21 @@
+/*
+ * timer.h
+ *
+ *  Created on: Apr 30, 2025
+ *      Author: blew2
+ */
+
+#ifndef INC_TIMER_H_
+#define INC_TIMER_H_
+
+
+
+#define RCC_APB1ENR1_TIM2EN
+#define TIM_DIER_CC1IE
+#define TIM_DIER_UIE
+
+
+
+
+
+#endif /* INC_TIMER_H_ */
