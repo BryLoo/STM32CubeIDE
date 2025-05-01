@@ -3,6 +3,7 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="int"/>
 		<item value="gpioc"/>
 		<item value="led"/>
 		<item value="mx_gpio_init"/>
