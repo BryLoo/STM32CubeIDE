@@ -1,9 +1,1 @@
-2025-04-15 02:27:39,526 [INFO] WebApp:191 - Connection restablished
-2025-04-15 02:27:42,199 [INFO] WebApp:194 - Connection lost
-2025-04-15 02:27:43,061 [INFO] WebApp:191 - Connection restablished
-2025-04-15 02:27:45,066 [INFO] WebApp:194 - Connection lost
-2025-04-15 02:27:45,918 [INFO] WebApp:191 - Connection restablished
-2025-04-15 02:29:21,538 [INFO] WebApp:194 - Connection lost
-2025-04-15 02:29:22,306 [INFO] WebApp:191 - Connection restablished
-2025-04-15 02:45:57,497 [INFO] WebApp:194 - Connection lost
-2025-04-15 02:45:58,578 [INFO] WebApp:191 - Connection restablished
+2025-04-14 18:09:56,127 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 

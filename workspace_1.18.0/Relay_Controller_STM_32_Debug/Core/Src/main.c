@@ -22,7 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
-#include <stdint.h>
+#include "stdint.h"
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -163,7 +164,7 @@ int main(void)
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   LTC4151_Init();
-  HAL_Delay(500);
+  //HAL_Delay(500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -174,7 +175,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	LTC4151_Read();
-	HAL_Delay(500);
+	PrechargeProcedure();
+	//HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }
