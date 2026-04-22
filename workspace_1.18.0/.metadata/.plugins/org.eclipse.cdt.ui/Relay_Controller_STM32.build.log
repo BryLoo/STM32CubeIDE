@@ -1,17 +1,10 @@
-00:55:09 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
+01:29:59 **** Incremental Build of configuration Debug for project Relay_Controller_STM32 ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0plus -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32G051xx -c -I../Core/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc -I../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32G0xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Relay_Controller_STM32.elf" @"objects.list"   -mcpu=cortex-m0plus -T"C:\Users\blew2\Documents\GitHub\STM32CubeIDE\workspace_1.18.0\Relay_Controller_STM32\STM32G051F8PX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Relay_Controller_STM32.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Relay_Controller_STM32.elf
- 
 arm-none-eabi-size  Relay_Controller_STM32.elf 
-arm-none-eabi-objdump -h -S Relay_Controller_STM32.elf  > "Relay_Controller_STM32.list"
    text	   data	    bss	    dec	    hex	filename
-  19804	    104	   2176	  22084	   5644	Relay_Controller_STM32.elf
+  20076	    108	   2188	  22372	   5764	Relay_Controller_STM32.elf
 Finished building: default.size.stdout
  
-Finished building: Relay_Controller_STM32.list
- 
 
-00:55:11 Build Finished. 0 errors, 0 warnings. (took 1s.562ms)
+01:29:59 Build Finished. 0 errors, 0 warnings. (took 653ms)
 

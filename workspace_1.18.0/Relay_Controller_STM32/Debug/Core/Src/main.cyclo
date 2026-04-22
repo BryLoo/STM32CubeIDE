@@ -1,9 +1,0 @@
-../Core/Src/main.c:91:6:LTC4151_Init	2
-../Core/Src/main.c:110:6:LTC4151_Read	3
-../Core/Src/main.c:139:6:PrechargeProcedure	7
-../Core/Src/main.c:201:5:main	2
-../Core/Src/main.c:256:6:SystemClock_Config	3
-../Core/Src/main.c:303:13:MX_I2C1_Init	4
-../Core/Src/main.c:349:13:MX_DMA_Init	1
-../Core/Src/main.c:370:13:MX_GPIO_Init	1
-../Core/Src/main.c:411:6:Error_Handler	1

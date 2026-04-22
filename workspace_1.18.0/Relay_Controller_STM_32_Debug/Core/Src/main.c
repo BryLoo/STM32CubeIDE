@@ -22,8 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stdio.h"
-#include <stdint.h>
-#include <stdbool.h>
+#include "stdint.h"
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -236,7 +236,7 @@ int main(void)
   HAL_GPIO_WritePin(NegativePort, NegativePin, GPIO_PIN_RESET);
   HAL_GPIO_WritePin(PositivePort, PositivePin, GPIO_PIN_RESET);
   LTC4151_Init();
-  HAL_Delay(500);
+  //HAL_Delay(500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -247,7 +247,8 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	LTC4151_Read();
-	HAL_Delay(500);
+	PrechargeProcedure();
+	//HAL_Delay(500);
   }
   /* USER CODE END 3 */
 }

@@ -1,0 +1,10 @@
+../Core/Src/main.c:95:5:main	1
+../Core/Src/main.c:177:6:SystemClock_Config	4
+../Core/Src/main.c:238:13:MX_LPUART1_UART_Init	2
+../Core/Src/main.c:272:13:MX_USB_OTG_FS_PCD_Init	2
+../Core/Src/main.c:307:13:MX_GPIO_Init	1
+../Core/Src/main.c:363:6:BlinkTask2	2
+../Core/Src/main.c:383:6:BlinkTask3	5
+../Core/Src/main.c:423:6:Blink_LED	2
+../Core/Src/main.c:451:6:HAL_TIM_PeriodElapsedCallback	2
+../Core/Src/main.c:469:6:Error_Handler	1

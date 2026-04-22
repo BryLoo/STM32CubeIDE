@@ -1,0 +1,2 @@
+2025-11-11 14:57:35,032 [WARN] IP:2250 - I2C_Coeff_DF not found: check if there is a RefParameter without a condition.
+2025-11-11 14:57:35,051 [WARN] IP:2250 - Analog_Filter not found: check if there is a RefParameter without a condition.
